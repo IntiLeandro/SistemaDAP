@@ -11,7 +11,6 @@ namespace SistemaDAP.Controllers
         public ActionResult Index()
         {
             return View();
-            //comentario
         }
 
         public ActionResult About()

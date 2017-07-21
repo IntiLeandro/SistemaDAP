@@ -18,8 +18,13 @@ namespace SistemaDAP.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        //roles
+        ApplicationDbContext context;
+
         public AccountController()
         {
+            //roles            
+            context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,6 +144,9 @@ namespace SistemaDAP.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //roles
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+
             return View();
         }
 
@@ -155,6 +163,11 @@ namespace SistemaDAP.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //roles
+                    //Assign Role to user Here 
+                    await this.UserManager.AddToRoleAsync(user.Id, model.Name);
+                    //Ends Here
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771

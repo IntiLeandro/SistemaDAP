@@ -10,6 +10,7 @@ using SistemaDAP.Models;
 
 namespace SistemaDAP.Controllers
 {
+    
     public class paisController : Controller
     {
         private DBDAPEntities db = new DBDAPEntities();
@@ -35,6 +36,7 @@ namespace SistemaDAP.Controllers
             return View(pais);
         }
 
+        [Authorize(Roles = "administrador")]
         // GET: pais/Create
         public ActionResult Create()
         {
@@ -58,6 +60,7 @@ namespace SistemaDAP.Controllers
             return View(pais);
         }
 
+        [Authorize(Roles = "administrador")]
         // GET: pais/Edit/5
         public ActionResult Edit(decimal id)
         {
@@ -89,6 +92,7 @@ namespace SistemaDAP.Controllers
             return View(pais);
         }
 
+        [Authorize(Roles = "administrador")]
         // GET: pais/Delete/5
         public ActionResult Delete(decimal id)
         {

@@ -19,6 +19,38 @@
           <Property Name="id_cargo" Type="numeric" Precision="4" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion_cargo" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="id_ciudad" />
+          </Key>
+          <Property Name="id_ciudad" Type="numeric" Precision="4" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_departamento" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="descripcion_ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="id_departamento" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="id_ciudad" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="id_pais" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="nombre_razon_social_cliente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="direccion_cliente" Type="varchar" MaxLength="160" />
+          <Property Name="telefono_cliente" Type="numeric" Precision="20" Scale="0" />
+          <Property Name="email_cliente" Type="varchar" MaxLength="100" />
+          <Property Name="ci_ruc_cliente" Type="varchar" MaxLength="20" />
+          <Property Name="fecha_nacimiento_cliente" Type="date" />
+          <Property Name="sexo_cliente" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="departamento">
+          <Key>
+            <PropertyRef Name="id_departamento" />
+          </Key>
+          <Property Name="id_departamento" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pais" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="descripcion_departamento" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="pais">
           <Key>
             <PropertyRef Name="id_pais" />
@@ -48,13 +80,96 @@
           <Property Name="id_tipo_servicio" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion_tipo_servicio" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <Association Name="ciudad_cliente_fk">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="id_ciudad" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="departamento_ciudad_fk">
+          <End Role="departamento" Type="Self.departamento" Multiplicity="1" />
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="id_departamento" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="id_departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="departamento_cliente_fk">
+          <End Role="departamento" Type="Self.departamento" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="id_departamento" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pais_cliente_fk">
+          <End Role="pais" Type="Self.pais" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pais_departamento_fk">
+          <End Role="pais" Type="Self.pais" Multiplicity="1" />
+          <End Role="departamento" Type="Self.departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="departamento">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBDAPModeloStoreContainer">
           <EntitySet Name="banco" EntityType="Self.banco" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cargo" EntityType="Self.cargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="departamento" EntityType="Self.departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_articulo" EntityType="Self.tipo_articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_herramienta" EntityType="Self.tipo_herramienta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_servicio" EntityType="Self.tipo_servicio" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="ciudad_cliente_fk" Association="Self.ciudad_cliente_fk">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="departamento_ciudad_fk" Association="Self.departamento_ciudad_fk">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="departamento_cliente_fk" Association="Self.departamento_cliente_fk">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="pais_cliente_fk" Association="Self.pais_cliente_fk">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="pais_departamento_fk" Association="Self.pais_departamento_fk">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="departamento" EntitySet="departamento" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -67,6 +182,8 @@
           <Property Name="id_pais" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion_pais" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nacionalidad_pais" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="departamento" Relationship="DBDAPModelo.pais_departamento_fk" FromRole="pais" ToRole="departamento" />
+          <NavigationProperty Name="cliente" Relationship="DBDAPModelo.pais_cliente_fk" FromRole="pais" ToRole="cliente" />
         </EntityType>
         <EntityContainer Name="DBDAPEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="pais" EntityType="Self.pais" />
@@ -75,6 +192,29 @@
           <EntitySet Name="banco" EntityType="DBDAPModelo.banco" />
           <EntitySet Name="tipo_articulo" EntityType="DBDAPModelo.tipo_articulo" />
           <EntitySet Name="tipo_herramienta" EntityType="DBDAPModelo.tipo_herramienta" />
+          <EntitySet Name="departamento" EntityType="DBDAPModelo.departamento" />
+          <AssociationSet Name="pais_departamento_fk" Association="DBDAPModelo.pais_departamento_fk">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="departamento" EntitySet="departamento" />
+          </AssociationSet>
+          <EntitySet Name="ciudad" EntityType="DBDAPModelo.ciudad" />
+          <AssociationSet Name="departamento_ciudad_fk" Association="DBDAPModelo.departamento_ciudad_fk">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <EntitySet Name="cliente" EntityType="DBDAPModelo.cliente" />
+          <AssociationSet Name="ciudad_cliente_fk" Association="DBDAPModelo.ciudad_cliente_fk">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="departamento_cliente_fk" Association="DBDAPModelo.departamento_cliente_fk">
+            <End Role="departamento" EntitySet="departamento" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="pais_cliente_fk" Association="DBDAPModelo.pais_cliente_fk">
+            <End Role="pais" EntitySet="pais" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="cargo">
           <Key>
@@ -111,6 +251,106 @@
           <Property Name="id_tipo_herramienta" Type="Decimal" Nullable="false" Precision="2" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion_tipo_herramienta" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="departamento">
+          <Key>
+            <PropertyRef Name="id_departamento" />
+          </Key>
+          <Property Name="id_departamento" Type="Decimal" Nullable="false" Precision="3" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pais" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="descripcion_departamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pais" Relationship="DBDAPModelo.pais_departamento_fk" FromRole="departamento" ToRole="pais" />
+          <NavigationProperty Name="ciudad" Relationship="DBDAPModelo.departamento_ciudad_fk" FromRole="departamento" ToRole="ciudad" />
+          <NavigationProperty Name="cliente" Relationship="DBDAPModelo.departamento_cliente_fk" FromRole="departamento" ToRole="cliente" />
+        </EntityType>
+        <Association Name="pais_departamento_fk">
+          <End Type="DBDAPModelo.pais" Role="pais" Multiplicity="1" />
+          <End Type="DBDAPModelo.departamento" Role="departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="departamento">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="id_ciudad" />
+          </Key>
+          <Property Name="id_ciudad" Type="Decimal" Nullable="false" Precision="4" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_departamento" Type="Decimal" Nullable="false" Precision="3" Scale="0" />
+          <Property Name="descripcion_ciudad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="departamento" Relationship="DBDAPModelo.departamento_ciudad_fk" FromRole="ciudad" ToRole="departamento" />
+          <NavigationProperty Name="cliente" Relationship="DBDAPModelo.ciudad_cliente_fk" FromRole="ciudad" ToRole="cliente" />
+        </EntityType>
+        <Association Name="departamento_ciudad_fk">
+          <End Type="DBDAPModelo.departamento" Role="departamento" Multiplicity="1" />
+          <End Type="DBDAPModelo.ciudad" Role="ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="id_departamento" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="id_departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Decimal" Nullable="false" Precision="9" Scale="0" />
+          <Property Name="id_departamento" Type="Decimal" Nullable="false" Precision="3" Scale="0" />
+          <Property Name="id_ciudad" Type="Decimal" Nullable="false" Precision="4" Scale="0" />
+          <Property Name="id_pais" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="nombre_razon_social_cliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_cliente" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_cliente" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="email_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ci_ruc_cliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_nacimiento_cliente" Type="DateTime" Precision="0" />
+          <Property Name="sexo_cliente" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ciudad" Relationship="DBDAPModelo.ciudad_cliente_fk" FromRole="cliente" ToRole="ciudad" />
+          <NavigationProperty Name="departamento" Relationship="DBDAPModelo.departamento_cliente_fk" FromRole="cliente" ToRole="departamento" />
+          <NavigationProperty Name="pais" Relationship="DBDAPModelo.pais_cliente_fk" FromRole="cliente" ToRole="pais" />
+        </EntityType>
+        <Association Name="ciudad_cliente_fk">
+          <End Type="DBDAPModelo.ciudad" Role="ciudad" Multiplicity="1" />
+          <End Type="DBDAPModelo.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="id_ciudad" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="departamento_cliente_fk">
+          <End Type="DBDAPModelo.departamento" Role="departamento" Multiplicity="1" />
+          <End Type="DBDAPModelo.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamento">
+              <PropertyRef Name="id_departamento" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pais_cliente_fk">
+          <End Type="DBDAPModelo.pais" Role="pais" Multiplicity="1" />
+          <End Type="DBDAPModelo.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -163,6 +403,41 @@
               <MappingFragment StoreEntitySet="tipo_herramienta">
                 <ScalarProperty Name="descripcion_tipo_herramienta" ColumnName="descripcion_tipo_herramienta" />
                 <ScalarProperty Name="id_tipo_herramienta" ColumnName="id_tipo_herramienta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departamento">
+            <EntityTypeMapping TypeName="DBDAPModelo.departamento">
+              <MappingFragment StoreEntitySet="departamento">
+                <ScalarProperty Name="descripcion_departamento" ColumnName="descripcion_departamento" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="id_departamento" ColumnName="id_departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ciudad">
+            <EntityTypeMapping TypeName="DBDAPModelo.ciudad">
+              <MappingFragment StoreEntitySet="ciudad">
+                <ScalarProperty Name="descripcion_ciudad" ColumnName="descripcion_ciudad" />
+                <ScalarProperty Name="id_departamento" ColumnName="id_departamento" />
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="DBDAPModelo.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="sexo_cliente" ColumnName="sexo_cliente" />
+                <ScalarProperty Name="fecha_nacimiento_cliente" ColumnName="fecha_nacimiento_cliente" />
+                <ScalarProperty Name="ci_ruc_cliente" ColumnName="ci_ruc_cliente" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="telefono_cliente" ColumnName="telefono_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="nombre_razon_social_cliente" ColumnName="nombre_razon_social_cliente" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+                <ScalarProperty Name="id_departamento" ColumnName="id_departamento" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

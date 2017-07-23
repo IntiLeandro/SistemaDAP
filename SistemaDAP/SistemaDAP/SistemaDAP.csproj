@@ -172,6 +172,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\bancoController.cs" />
     <Compile Include="Controllers\cargoController.cs" />
+    <Compile Include="Controllers\ciudadController.cs" />
+    <Compile Include="Controllers\clienteController.cs" />
+    <Compile Include="Controllers\departamentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\paisController.cs" />
@@ -186,6 +189,15 @@
       <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cargo.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ciudad.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cliente.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\departamento.cs">
       <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -322,6 +334,21 @@
     <Content Include="Views\tipo_herramienta\Details.cshtml" />
     <Content Include="Views\tipo_herramienta\Edit.cshtml" />
     <Content Include="Views\tipo_herramienta\Index.cshtml" />
+    <Content Include="Views\departamento\Create.cshtml" />
+    <Content Include="Views\departamento\Delete.cshtml" />
+    <Content Include="Views\departamento\Details.cshtml" />
+    <Content Include="Views\departamento\Edit.cshtml" />
+    <Content Include="Views\departamento\Index.cshtml" />
+    <Content Include="Views\ciudad\Create.cshtml" />
+    <Content Include="Views\ciudad\Delete.cshtml" />
+    <Content Include="Views\ciudad\Details.cshtml" />
+    <Content Include="Views\ciudad\Edit.cshtml" />
+    <Content Include="Views\ciudad\Index.cshtml" />
+    <Content Include="Views\cliente\Create.cshtml" />
+    <Content Include="Views\cliente\Delete.cshtml" />
+    <Content Include="Views\cliente\Details.cshtml" />
+    <Content Include="Views\cliente\Edit.cshtml" />
+    <Content Include="Views\cliente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

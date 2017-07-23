@@ -12,21 +12,19 @@ namespace SistemaDAP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class pais
+    public partial class ciudad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public pais()
+        public ciudad()
         {
-            this.departamento = new HashSet<departamento>();
             this.cliente = new HashSet<cliente>();
         }
     
-        public decimal id_pais { get; set; }
-        public string descripcion_pais { get; set; }
-        public string nacionalidad_pais { get; set; }
+        public decimal id_ciudad { get; set; }
+        public decimal id_departamento { get; set; }
+        public string descripcion_ciudad { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<departamento> departamento { get; set; }
+        public virtual departamento departamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cliente> cliente { get; set; }
     }

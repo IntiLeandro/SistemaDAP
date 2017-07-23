@@ -4,20 +4,59 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBDAPModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBDAPModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="banco">
+          <Key>
+            <PropertyRef Name="id_banco" />
+          </Key>
+          <Property Name="id_banco" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_banco" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cargo">
+          <Key>
+            <PropertyRef Name="id_cargo" />
+          </Key>
+          <Property Name="id_cargo" Type="numeric" Precision="4" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_cargo" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
         <EntityType Name="pais">
           <Key>
             <PropertyRef Name="id_pais" />
           </Key>
           <Property Name="id_pais" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion_pais" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="nacionalidad_pais" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nacionalidad_pais" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_articulo">
+          <Key>
+            <PropertyRef Name="id_tipo_articulo" />
+          </Key>
+          <Property Name="id_tipo_articulo" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_tipo_articulo" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_herramienta">
+          <Key>
+            <PropertyRef Name="id_tipo_herramienta" />
+          </Key>
+          <Property Name="id_tipo_herramienta" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_tipo_herramienta" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_servicio">
+          <Key>
+            <PropertyRef Name="id_tipo_servicio" />
+          </Key>
+          <Property Name="id_tipo_servicio" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_tipo_servicio" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DBDAPModeloStoreContainer">
+          <EntitySet Name="banco" EntityType="Self.banco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cargo" EntityType="Self.cargo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_articulo" EntityType="Self.tipo_articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_herramienta" EntityType="Self.tipo_herramienta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_servicio" EntityType="Self.tipo_servicio" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBDAPModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -27,11 +66,51 @@
           </Key>
           <Property Name="id_pais" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion_pais" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nacionalidad_pais" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nacionalidad_pais" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DBDAPEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="pais" EntityType="Self.pais" />
+          <EntitySet Name="cargo" EntityType="DBDAPModelo.cargo" />
+          <EntitySet Name="tipo_servicio" EntityType="DBDAPModelo.tipo_servicio" />
+          <EntitySet Name="banco" EntityType="DBDAPModelo.banco" />
+          <EntitySet Name="tipo_articulo" EntityType="DBDAPModelo.tipo_articulo" />
+          <EntitySet Name="tipo_herramienta" EntityType="DBDAPModelo.tipo_herramienta" />
         </EntityContainer>
+        <EntityType Name="cargo">
+          <Key>
+            <PropertyRef Name="id_cargo" />
+          </Key>
+          <Property Name="id_cargo" Type="Decimal" Nullable="false" Precision="4" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_cargo" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tipo_servicio">
+          <Key>
+            <PropertyRef Name="id_tipo_servicio" />
+          </Key>
+          <Property Name="id_tipo_servicio" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_tipo_servicio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="banco">
+          <Key>
+            <PropertyRef Name="id_banco" />
+          </Key>
+          <Property Name="id_banco" Type="Decimal" Nullable="false" Precision="2" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_banco" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tipo_articulo">
+          <Key>
+            <PropertyRef Name="id_tipo_articulo" />
+          </Key>
+          <Property Name="id_tipo_articulo" Type="Decimal" Nullable="false" Precision="2" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_tipo_articulo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tipo_herramienta">
+          <Key>
+            <PropertyRef Name="id_tipo_herramienta" />
+          </Key>
+          <Property Name="id_tipo_herramienta" Type="Decimal" Nullable="false" Precision="2" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_tipo_herramienta" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -44,6 +123,46 @@
                 <ScalarProperty Name="id_pais" ColumnName="id_pais" />
                 <ScalarProperty Name="descripcion_pais" ColumnName="descripcion_pais" />
                 <ScalarProperty Name="nacionalidad_pais" ColumnName="nacionalidad_pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cargo">
+            <EntityTypeMapping TypeName="DBDAPModelo.cargo">
+              <MappingFragment StoreEntitySet="cargo">
+                <ScalarProperty Name="descripcion_cargo" ColumnName="descripcion_cargo" />
+                <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_servicio">
+            <EntityTypeMapping TypeName="DBDAPModelo.tipo_servicio">
+              <MappingFragment StoreEntitySet="tipo_servicio">
+                <ScalarProperty Name="descripcion_tipo_servicio" ColumnName="descripcion_tipo_servicio" />
+                <ScalarProperty Name="id_tipo_servicio" ColumnName="id_tipo_servicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="banco">
+            <EntityTypeMapping TypeName="DBDAPModelo.banco">
+              <MappingFragment StoreEntitySet="banco">
+                <ScalarProperty Name="descripcion_banco" ColumnName="descripcion_banco" />
+                <ScalarProperty Name="id_banco" ColumnName="id_banco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_articulo">
+            <EntityTypeMapping TypeName="DBDAPModelo.tipo_articulo">
+              <MappingFragment StoreEntitySet="tipo_articulo">
+                <ScalarProperty Name="descripcion_tipo_articulo" ColumnName="descripcion_tipo_articulo" />
+                <ScalarProperty Name="id_tipo_articulo" ColumnName="id_tipo_articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_herramienta">
+            <EntityTypeMapping TypeName="DBDAPModelo.tipo_herramienta">
+              <MappingFragment StoreEntitySet="tipo_herramienta">
+                <ScalarProperty Name="descripcion_tipo_herramienta" ColumnName="descripcion_tipo_herramienta" />
+                <ScalarProperty Name="id_tipo_herramienta" ColumnName="id_tipo_herramienta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

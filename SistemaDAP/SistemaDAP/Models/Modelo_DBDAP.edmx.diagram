@@ -4,8 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1d18007cb1b14469a17ac771221a97e3" Name="Diagram1">
-        <EntityTypeShape EntityType="DBDAPModelo.pais" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="1d18007cb1b14469a17ac771221a97e3" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DBDAPModelo.pais" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDAPModelo.cargo" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_servicio" Width="1.5" PointX="0.5" PointY="2.375" />
+        <EntityTypeShape EntityType="DBDAPModelo.banco" Width="1.5" PointX="2.375" PointY="2.375" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_articulo" Width="1.5" PointX="4.125" PointY="0.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_herramienta" Width="1.5" PointX="4.125" PointY="2.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

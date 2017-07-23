@@ -26,5 +26,10 @@ namespace SistemaDAP.Models
         }
     
         public virtual DbSet<pais> pais { get; set; }
+        public virtual DbSet<cargo> cargo { get; set; }
+        public virtual DbSet<tipo_servicio> tipo_servicio { get; set; }
+        public virtual DbSet<banco> banco { get; set; }
+        public virtual DbSet<tipo_articulo> tipo_articulo { get; set; }
+        public virtual DbSet<tipo_herramienta> tipo_herramienta { get; set; }
     }
 }

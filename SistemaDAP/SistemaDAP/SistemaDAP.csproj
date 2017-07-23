@@ -170,13 +170,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\bancoController.cs" />
+    <Compile Include="Controllers\cargoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\paisController.cs" />
+    <Compile Include="Controllers\tipo_articuloController.cs" />
+    <Compile Include="Controllers\tipo_herramientaController.cs" />
+    <Compile Include="Controllers\tipo_servicioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\banco.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cargo.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Modelo_DBDAP.Context.cs">
@@ -195,6 +206,15 @@
       <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\pais.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_articulo.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_herramienta.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_servicio.cs">
       <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -277,6 +297,31 @@
     <Content Include="Views\pais\Details.cshtml" />
     <Content Include="Views\pais\Edit.cshtml" />
     <Content Include="Views\pais\Index.cshtml" />
+    <Content Include="Views\cargo\Create.cshtml" />
+    <Content Include="Views\cargo\Delete.cshtml" />
+    <Content Include="Views\cargo\Details.cshtml" />
+    <Content Include="Views\cargo\Edit.cshtml" />
+    <Content Include="Views\cargo\Index.cshtml" />
+    <Content Include="Views\tipo_servicio\Create.cshtml" />
+    <Content Include="Views\tipo_servicio\Delete.cshtml" />
+    <Content Include="Views\tipo_servicio\Details.cshtml" />
+    <Content Include="Views\tipo_servicio\Edit.cshtml" />
+    <Content Include="Views\tipo_servicio\Index.cshtml" />
+    <Content Include="Views\banco\Create.cshtml" />
+    <Content Include="Views\banco\Delete.cshtml" />
+    <Content Include="Views\banco\Details.cshtml" />
+    <Content Include="Views\banco\Edit.cshtml" />
+    <Content Include="Views\banco\Index.cshtml" />
+    <Content Include="Views\tipo_articulo\Create.cshtml" />
+    <Content Include="Views\tipo_articulo\Delete.cshtml" />
+    <Content Include="Views\tipo_articulo\Details.cshtml" />
+    <Content Include="Views\tipo_articulo\Edit.cshtml" />
+    <Content Include="Views\tipo_articulo\Index.cshtml" />
+    <Content Include="Views\tipo_herramienta\Create.cshtml" />
+    <Content Include="Views\tipo_herramienta\Delete.cshtml" />
+    <Content Include="Views\tipo_herramienta\Details.cshtml" />
+    <Content Include="Views\tipo_herramienta\Edit.cshtml" />
+    <Content Include="Views\tipo_herramienta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SistemaDAP.Models.presupuesto_detalle>
+
+@{
+    ViewBag.Title = "DetallePresupuesto";
+}
+
+<!-- Cabecera -->
+<div class="row sub-header">
+    <div class="col-sm-12">
+        <h2>Detalles del presupuesto</h2>
+    </div>
+</div>
+
+<div class="sub-body">
+    <div class="panel">
+        @*<div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-offset-9 col-sm-3">
+                        @Html.ActionLink("Dar Alta", "Create", null, new { @class = "btn btn-xs btn-default pull-right" })
+                    </div>
+                </div>
+            </div>*@
+        <div class="panel-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id_presupuesto_cabecera)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cantidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.precio_unitario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.articulo.descripcion)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id_presupuesto_cabecera)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cantidad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.precio_unitario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.articulo.descripcion)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

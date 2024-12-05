@@ -14,7 +14,16 @@ namespace SistemaDAP.Models
     
     public partial class banco
     {
-        public decimal id_banco { get; set; }
-        public string descripcion_banco { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public banco()
+        {
+            this.cobro = new HashSet<cobro>();
+        }
+    
+        public int id_banco { get; set; }
+        public string descripcion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cobro> cobro { get; set; }
     }
 }

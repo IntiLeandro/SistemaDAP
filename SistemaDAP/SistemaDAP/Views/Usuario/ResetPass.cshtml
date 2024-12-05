@@ -1,0 +1,50 @@
+﻿@model SistemaDAP.Models.usuario.ResetPassVM
+@{
+    ViewBag.Title = "ResetPass";
+}
+
+<h2>Resetear Contraseña</h2>
+<!-- Cabecera -->
+<div class="row sub-header">
+    <div class="col-sm-12">
+        <h2>@Model.Usuario</h2>
+    </div>
+</div>
+
+<div class="sub-body">
+    <div class="panel">
+        <div class="panel-body">
+
+            @using (Html.BeginForm("ResetPass", "Usuario", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Usuario)
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NewPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Cambiar contraseña" class="btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Volver a lista de usuarios", "Index")
+</div>

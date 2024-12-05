@@ -1,0 +1,42 @@
+﻿@model SistemaDAP.Models.orden_trabajo_cabecera
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>orden_trabajo_cabecera</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_orden_trabajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_orden_trabajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.ci_ruc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.ci_ruc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presupuesto_cabecera.id_presupuesto_cabecera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presupuesto_cabecera.id_presupuesto_cabecera)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_orden_trabajo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SistemaDAP.Models.cliente>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Clientes/Create.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ci_ruc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_razon_social)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_nacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ciudad.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pais.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ci_ruc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_razon_social)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_nacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ciudad.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departamento.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pais.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_cliente }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_cliente }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_cliente })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -25,6 +25,10 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
     <Use64BitIISExpress />
   </PropertyGroup>
@@ -38,6 +42,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
@@ -46,13 +51,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.0.5\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorPDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -60,11 +77,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -106,6 +120,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -164,75 +179,231 @@
     <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
       <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SistemaDapAuth.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\bancoController.cs" />
-    <Compile Include="Controllers\cargoController.cs" />
-    <Compile Include="Controllers\ciudadController.cs" />
-    <Compile Include="Controllers\clienteController.cs" />
-    <Compile Include="Controllers\departamentoController.cs" />
+    <Compile Include="Controllers\articulosController.cs" />
+    <Compile Include="Controllers\cajasController.cs" />
+    <Compile Include="Controllers\caja_apertura_cierreController.cs" />
+    <Compile Include="Controllers\cargosController.cs" />
+    <Compile Include="Controllers\empleadosController.cs" />
+    <Compile Include="Controllers\familiasController.cs" />
+    <Compile Include="Controllers\gruposController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\impuestosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\paisController.cs" />
+    <Compile Include="Controllers\modelosController.cs" />
+    <Compile Include="Controllers\OrdenTrabajoController.cs" />
+    <Compile Include="Controllers\orden_trabajo_cabecera1Controller.cs" />
+    <Compile Include="Controllers\orden_trabajo_cabeceraController.cs" />
+    <Compile Include="Controllers\orden_trabajo_detalleController.cs" />
+    <Compile Include="Controllers\PermisoRolController.cs" />
+    <Compile Include="Controllers\PresupuestoController.cs" />
+    <Compile Include="Controllers\presupuesto_cabeceraController.cs" />
+    <Compile Include="Controllers\presupuesto_detalleController.cs" />
+    <Compile Include="Controllers\proveedoresController.cs" />
     <Compile Include="Controllers\tipo_articuloController.cs" />
-    <Compile Include="Controllers\tipo_herramientaController.cs" />
-    <Compile Include="Controllers\tipo_servicioController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="marcasController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ajuste.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\articulo.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\banco.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\caja.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\caja_apertura_cierre.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cargo.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ciudad.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cliente.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\departamento.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    <Compile Include="Models\clientesController.cs" />
+    <Compile Include="Models\cobro.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Modelo_DBDAP.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo_DBDAP.Context.tt</DependentUpon>
+    <Compile Include="Models\compra.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Modelo_DBDAP.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    <Compile Include="Models\compra_detalle.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Modelo_DBDAP.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Departamento.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DepartamentosController.cs" />
+    <Compile Include="Models\empleado.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\factura.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\factura_detalle.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\familia.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\grupo.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\herramienta.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\impuesto.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\marca.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetaData.cs" />
+    <Compile Include="Models\modelo.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\motivo_ajuste.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\orden_trabajo\ArticuloOrdenTrabajoCabecera.cs" />
+    <Compile Include="Models\orden_trabajo\OrdenTrabajoCabeceraView.cs" />
+    <Compile Include="Models\orden_trabajo\PresupuestoOrdenTrabajoCabecera.cs" />
+    <Compile Include="Models\orden_trabajo_cabecera.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\orden_trabajo_detalle.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\pais.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaisController.cs" />
+    <Compile Include="Models\PartialClasses.cs" />
+    <Compile Include="Models\permiso_rol.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\presupuesto\ArticuloPresupuestoCabecera.cs" />
+    <Compile Include="Models\presupuesto\ClientePresupuestoCabecera.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModeloDBDAP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDBDAP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloDBDAP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloDBDAP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDBDAP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\presupuesto\PresupuestoCabeceraView.cs" />
+    <Compile Include="Models\presupuesto_cabecera.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\presupuesto_detalle.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\presupuesto_estado.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proveedor.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\salida_herramienta_cabecera.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\salida_herramienta_detalle.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipo_articulo.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_cobro.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_factura.cs">
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipo_herramienta.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipo_servicio.cs">
-      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+      <DependentUpon>ModeloDBDAP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usuario\AspUserRolesVM.cs" />
+    <Compile Include="Models\usuario\ResetPassVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Controllers\ciudadController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -241,24 +412,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Modelo_DBDAP.Context.tt">
+    <Content Include="Models\ModeloDBDAP.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
-      <LastGenOutput>Modelo_DBDAP.Context.cs</LastGenOutput>
+      <DependentUpon>ModeloDBDAP.edmx</DependentUpon>
+      <LastGenOutput>ModeloDBDAP.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Modelo_DBDAP.tt">
+    <Content Include="Models\ModeloDBDAP.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
-      <LastGenOutput>Modelo_DBDAP.cs</LastGenOutput>
+      <DependentUpon>ModeloDBDAP.edmx</DependentUpon>
+      <LastGenOutput>ModeloDBDAP.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Modelo_DBDAP.edmx">
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\ModeloDBDAP.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Modelo_DBDAP.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModeloDBDAP.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Modelo_DBDAP.edmx.diagram">
-      <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
+    <Content Include="Models\ModeloDBDAP.edmx.diagram">
+      <DependentUpon>ModeloDBDAP.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -271,8 +445,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Views\presupuesto_cabecera\ListaPresupuesto.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -306,61 +482,149 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\pais\Create.cshtml" />
-    <Content Include="Views\pais\Delete.cshtml" />
-    <Content Include="Views\pais\Details.cshtml" />
-    <Content Include="Views\pais\Edit.cshtml" />
-    <Content Include="Views\pais\Index.cshtml" />
-    <Content Include="Views\cargo\Create.cshtml" />
-    <Content Include="Views\cargo\Delete.cshtml" />
-    <Content Include="Views\cargo\Details.cshtml" />
-    <Content Include="Views\cargo\Edit.cshtml" />
-    <Content Include="Views\cargo\Index.cshtml" />
-    <Content Include="Views\tipo_servicio\Create.cshtml" />
-    <Content Include="Views\tipo_servicio\Delete.cshtml" />
-    <Content Include="Views\tipo_servicio\Details.cshtml" />
-    <Content Include="Views\tipo_servicio\Edit.cshtml" />
-    <Content Include="Views\tipo_servicio\Index.cshtml" />
-    <Content Include="Views\banco\Create.cshtml" />
-    <Content Include="Views\banco\Delete.cshtml" />
-    <Content Include="Views\banco\Details.cshtml" />
-    <Content Include="Views\banco\Edit.cshtml" />
-    <Content Include="Views\banco\Index.cshtml" />
-    <Content Include="Views\tipo_articulo\Create.cshtml" />
-    <Content Include="Views\tipo_articulo\Delete.cshtml" />
-    <Content Include="Views\tipo_articulo\Details.cshtml" />
-    <Content Include="Views\tipo_articulo\Edit.cshtml" />
-    <Content Include="Views\tipo_articulo\Index.cshtml" />
-    <Content Include="Views\tipo_herramienta\Create.cshtml" />
-    <Content Include="Views\tipo_herramienta\Delete.cshtml" />
-    <Content Include="Views\tipo_herramienta\Details.cshtml" />
-    <Content Include="Views\tipo_herramienta\Edit.cshtml" />
-    <Content Include="Views\tipo_herramienta\Index.cshtml" />
-    <Content Include="Views\departamento\Create.cshtml" />
-    <Content Include="Views\departamento\Delete.cshtml" />
-    <Content Include="Views\departamento\Details.cshtml" />
-    <Content Include="Views\departamento\Edit.cshtml" />
-    <Content Include="Views\departamento\Index.cshtml" />
+    <Content Include="Views\Presupuesto\Index.cshtml" />
+    <Content Include="Views\Presupuesto\AddArticulo.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Delete.cshtml" />
+    <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\RolesDeUsuario.cshtml" />
+    <Content Include="Views\Usuario\ResetPass.cshtml" />
+    <Content Include="Views\PermisoRol\Create.cshtml" />
+    <Content Include="Views\PermisoRol\Delete.cshtml" />
+    <Content Include="Views\PermisoRol\Details.cshtml" />
+    <Content Include="Views\PermisoRol\Edit.cshtml" />
+    <Content Include="Views\PermisoRol\Index.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\Create.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\Delete.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\Details.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\Edit.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\Index.cshtml" />
+    <Content Include="Views\presupuesto_detalle\Create.cshtml" />
+    <Content Include="Views\presupuesto_detalle\Delete.cshtml" />
+    <Content Include="Views\presupuesto_detalle\Details.cshtml" />
+    <Content Include="Views\presupuesto_detalle\Edit.cshtml" />
+    <Content Include="Views\presupuesto_detalle\Index.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\DetallePresupuesto.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera\Create.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera\Delete.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera\Details.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera\Edit.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera\Index.cshtml" />
+    <Content Include="Views\orden_trabajo_detalle\Create.cshtml" />
+    <Content Include="Views\orden_trabajo_detalle\Delete.cshtml" />
+    <Content Include="Views\orden_trabajo_detalle\Details.cshtml" />
+    <Content Include="Views\orden_trabajo_detalle\Edit.cshtml" />
+    <Content Include="Views\orden_trabajo_detalle\Index.cshtml" />
+    <Content Include="Views\OrdenTrabajo\Index.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\OrdenTrabajo.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\DetalleOrdenTrabajo.cshtml" />
+    <Content Include="Views\presupuesto_cabecera\CreateOrdenTrabajoDetalle.cshtml" />
+    <Content Include="Views\OrdenTrabajo\AddArticulo.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera1\Create.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera1\Delete.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera1\Details.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera1\Edit.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera1\Index.cshtml" />
+    <Content Include="Views\orden_trabajo_cabecera1\DetalleOrdenTrabajo.cshtml" />
     <Content Include="Views\ciudad\Create.cshtml" />
     <Content Include="Views\ciudad\Delete.cshtml" />
     <Content Include="Views\ciudad\Details.cshtml" />
     <Content Include="Views\ciudad\Edit.cshtml" />
     <Content Include="Views\ciudad\Index.cshtml" />
-    <Content Include="Views\cliente\Create.cshtml" />
-    <Content Include="Views\cliente\Delete.cshtml" />
-    <Content Include="Views\cliente\Details.cshtml" />
-    <Content Include="Views\cliente\Edit.cshtml" />
-    <Content Include="Views\cliente\Index.cshtml" />
+    <Content Include="Views\Pais\Create.cshtml" />
+    <Content Include="Views\Pais\Delete.cshtml" />
+    <Content Include="Views\Pais\Details.cshtml" />
+    <Content Include="Views\Pais\Edit.cshtml" />
+    <Content Include="Views\Pais\Index.cshtml" />
+    <Content Include="Views\Departamentos\Create.cshtml" />
+    <Content Include="Views\Departamentos\Delete.cshtml" />
+    <Content Include="Views\Departamentos\Details.cshtml" />
+    <Content Include="Views\Departamentos\Edit.cshtml" />
+    <Content Include="Views\Departamentos\Index.cshtml" />
+    <Content Include="Views\clientes\Create.cshtml" />
+    <Content Include="Views\clientes\Delete.cshtml" />
+    <Content Include="Views\clientes\Details.cshtml" />
+    <Content Include="Views\clientes\Edit.cshtml" />
+    <Content Include="Views\clientes\Index.cshtml" />
+    <Content Include="Views\empleados\Create.cshtml" />
+    <Content Include="Views\empleados\Delete.cshtml" />
+    <Content Include="Views\empleados\Details.cshtml" />
+    <Content Include="Views\empleados\Edit.cshtml" />
+    <Content Include="Views\empleados\Index.cshtml" />
+    <Content Include="Views\cargos\Create.cshtml" />
+    <Content Include="Views\cargos\Delete.cshtml" />
+    <Content Include="Views\cargos\Details.cshtml" />
+    <Content Include="Views\cargos\Edit.cshtml" />
+    <Content Include="Views\cargos\Index.cshtml" />
+    <Content Include="Views\caja_apertura_cierre\Create.cshtml" />
+    <Content Include="Views\caja_apertura_cierre\Delete.cshtml" />
+    <Content Include="Views\caja_apertura_cierre\Details.cshtml" />
+    <Content Include="Views\caja_apertura_cierre\Edit.cshtml" />
+    <Content Include="Views\caja_apertura_cierre\Index.cshtml" />
+    <Content Include="Views\cajas\Create.cshtml" />
+    <Content Include="Views\cajas\Delete.cshtml" />
+    <Content Include="Views\cajas\Details.cshtml" />
+    <Content Include="Views\cajas\Edit.cshtml" />
+    <Content Include="Views\cajas\Index.cshtml" />
+    <Content Include="Views\proveedores\Create.cshtml" />
+    <Content Include="Views\proveedores\Delete.cshtml" />
+    <Content Include="Views\proveedores\Details.cshtml" />
+    <Content Include="Views\proveedores\Edit.cshtml" />
+    <Content Include="Views\proveedores\Index.cshtml" />
+    <Content Include="Views\impuestos\Create.cshtml" />
+    <Content Include="Views\impuestos\Delete.cshtml" />
+    <Content Include="Views\impuestos\Details.cshtml" />
+    <Content Include="Views\impuestos\Edit.cshtml" />
+    <Content Include="Views\impuestos\Index.cshtml" />
+    <Content Include="Views\articulos\Create.cshtml" />
+    <Content Include="Views\articulos\Delete.cshtml" />
+    <Content Include="Views\articulos\Details.cshtml" />
+    <Content Include="Views\articulos\Edit.cshtml" />
+    <Content Include="Views\articulos\Index.cshtml" />
+    <Content Include="Views\tipo_articulo\Create.cshtml" />
+    <Content Include="Views\tipo_articulo\Delete.cshtml" />
+    <Content Include="Views\tipo_articulo\Details.cshtml" />
+    <Content Include="Views\tipo_articulo\Edit.cshtml" />
+    <Content Include="Views\tipo_articulo\Index.cshtml" />
+    <Content Include="Views\modelos\Create.cshtml" />
+    <Content Include="Views\modelos\Delete.cshtml" />
+    <Content Include="Views\modelos\Details.cshtml" />
+    <Content Include="Views\modelos\Edit.cshtml" />
+    <Content Include="Views\modelos\Index.cshtml" />
+    <Content Include="Views\marcas\Create.cshtml" />
+    <Content Include="Views\marcas\Delete.cshtml" />
+    <Content Include="Views\marcas\Details.cshtml" />
+    <Content Include="Views\marcas\Edit.cshtml" />
+    <Content Include="Views\marcas\Index.cshtml" />
+    <Content Include="Views\familias\Create.cshtml" />
+    <Content Include="Views\familias\Delete.cshtml" />
+    <Content Include="Views\familias\Details.cshtml" />
+    <Content Include="Views\familias\Edit.cshtml" />
+    <Content Include="Views\familias\Index.cshtml" />
+    <Content Include="Views\grupos\Create.cshtml" />
+    <Content Include="Views\grupos\Delete.cshtml" />
+    <Content Include="Views\grupos\Details.cshtml" />
+    <Content Include="Views\grupos\Edit.cshtml" />
+    <Content Include="Views\grupos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
@@ -382,9 +646,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59427</DevelopmentServerPort>
+          <DevelopmentServerPort>49752</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59427/</IISUrl>
+          <IISUrl>http://localhost:49752/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -398,8 +662,8 @@
     <PropertyGroup>
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

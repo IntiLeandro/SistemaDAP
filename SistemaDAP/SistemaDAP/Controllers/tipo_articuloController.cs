@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using SistemaDAP.App_Start;
 using SistemaDAP.Models;
 
 namespace SistemaDAP.Controllers
 {
+    [SistemaDapAuth]
     public class tipo_articuloController : Controller
     {
         private DBDAPEntities db = new DBDAPEntities();
@@ -21,7 +23,7 @@ namespace SistemaDAP.Controllers
         }
 
         // GET: tipo_articulo/Details/5
-        public ActionResult Details(decimal id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -46,7 +48,7 @@ namespace SistemaDAP.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_tipo_articulo,descripcion_tipo_articulo")] tipo_articulo tipo_articulo)
+        public ActionResult Create([Bind(Include = "id_tipo_articulo,descripcion")] tipo_articulo tipo_articulo)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +61,7 @@ namespace SistemaDAP.Controllers
         }
 
         // GET: tipo_articulo/Edit/5
-        public ActionResult Edit(decimal id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -78,7 +80,7 @@ namespace SistemaDAP.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_tipo_articulo,descripcion_tipo_articulo")] tipo_articulo tipo_articulo)
+        public ActionResult Edit([Bind(Include = "id_tipo_articulo,descripcion")] tipo_articulo tipo_articulo)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +92,7 @@ namespace SistemaDAP.Controllers
         }
 
         // GET: tipo_articulo/Delete/5
-        public ActionResult Delete(decimal id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -107,7 +109,7 @@ namespace SistemaDAP.Controllers
         // POST: tipo_articulo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(decimal id)
+        public ActionResult DeleteConfirmed(int id)
         {
             tipo_articulo tipo_articulo = db.tipo_articulo.Find(id);
             db.tipo_articulo.Remove(tipo_articulo);

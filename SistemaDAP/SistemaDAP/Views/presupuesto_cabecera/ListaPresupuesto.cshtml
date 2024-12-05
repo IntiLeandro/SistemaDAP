@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SistemaDAP.Models.presupuesto_cabecera>
+
+@{
+    ViewBag.Title = "ListaPresupuesto";
+}
+
+<h2>ListaPresupuesto</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_presupuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.ci_ruc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_presupuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.ci_ruc)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.id_presupuesto_cabecera }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_presupuesto_cabecera }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_presupuesto_cabecera })*@
+        </td>
+    </tr>
+}
+
+</table>

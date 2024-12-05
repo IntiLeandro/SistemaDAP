@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SistemaDAP.Models.orden_trabajo_cabecera>
+
+@{
+    ViewBag.Title = "OrdenTrabajo";
+}
+
+<h2>Orden Trabajo</h2>
+
+@*<p>
+    @Html.ActionLink("Registrar", "Create")
+</p>*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_orden_trabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_orden_trabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion_orden_trabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.presupuesto_cabecera.id_presupuesto_cabecera)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @item.id_orden_trabajo
+            </td>
+            <td>
+                @item.fecha_orden_trabajo.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion_orden_trabajo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.presupuesto_cabecera.id_presupuesto_cabecera)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles Orden Trabajo", "DetalleOrdenTrabajo", new { idOrdenTrabajo = item.id_orden_trabajo })
+                @*@Html.ActionLink("Editar", "Edit", new { id = item.id_orden_trabajo }) |
+    @Html.ActionLink("Details", "Details", new { id=item.id_orden_trabajo }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.id_orden_trabajo }) |*@
+
+            </td>
+        </tr>
+
+    }
+</table>

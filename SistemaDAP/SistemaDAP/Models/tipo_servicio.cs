@@ -14,7 +14,16 @@ namespace SistemaDAP.Models
     
     public partial class tipo_servicio
     {
-        public decimal id_tipo_servicio { get; set; }
-        public string descripcion_tipo_servicio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tipo_servicio()
+        {
+            this.presupuesto_detalle = new HashSet<presupuesto_detalle>();
+        }
+    
+        public int id_tipo_servicio { get; set; }
+        public string descripcion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<presupuesto_detalle> presupuesto_detalle { get; set; }
     }
 }

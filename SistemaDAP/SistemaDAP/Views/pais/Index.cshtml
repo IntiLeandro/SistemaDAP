@@ -12,10 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.descripcion_pais)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nacionalidad_pais)
+            @Html.DisplayNameFor(model => model.descripcion)
         </th>
         <th></th>
     </tr>
@@ -23,10 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.descripcion_pais)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nacionalidad_pais)
+            @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id_pais }) |

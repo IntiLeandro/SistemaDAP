@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SistemaDAP.Models.presupuesto_cabecera>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Cabecera -->
+<div class="row sub-header">
+    <div class="col-sm-12">
+        <h2>Listado de presupuestos</h2>
+    </div>
+</div>
+
+<form method="get" action="/presupuesto_cabecera/ConsultarPresupuesto">
+    <p>
+        <h>Código Cliente:</h><input type="search" name="idCliente" />
+        <h>Fecha:</h><input type="search" name="fechaPresupuesto" />
+        @if (TempData["notice"] != null)
+        {
+        <h><font color="red">@TempData["notice"]</font></h>
+        }
+        <input type="submit" value="Buscar"/> 
+        <input type="submit" value="Mostrar Todos"/>
+    </p>
+</form> 
+
+@using (Html.BeginForm("CreatePdf", "presupuesto_cabecera", FormMethod.Post,new { listadoPresupuesto = Model.ToList() }))
+{
+    @Html.AntiForgeryToken()
+
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        var listaAux = Model.ToList();
+        @Html.Hidden("listadoPresupuesto[" + @i + "].id_presupuesto_cabecera", listaAux[i].id_presupuesto_cabecera, new { @readonly = "readonly" })
+    @Html.Hidden("listadoPresupuesto[" + @i + "].id_cliente", listaAux[i].id_cliente, new { @readonly = "readonly" })
+    @Html.Hidden("listadoPresupuesto[" + @i + "].fecha_presupuesto", listaAux[i].fecha_presupuesto, new { @readonly = "readonly" })
+    @*@Html.TextBox("listadoPresupuesto[" + @i + "].fecha_presupuesto", listaAux[i].fecha_presupuesto.ToShortDateString(), new { @class = "form-control datepicker", placeholder = "Enter Drop-off date here...", @style = "width:85px" })*@
+    }
+    <div class="form-group">
+            <input type="submit" value="Generar Reporte" class="btn btn-default" />
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_presupuesto_cabecera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_presupuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_cliente)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.id_presupuesto_cabecera 
+            </td>
+            <td>
+                @item.fecha_presupuesto.ToShortDateString()
+                @*@Html.DisplayFor(modelItem => item.fecha_presupuesto.ToString().Substring(0, 10))*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_cliente)
+            </td>
+            <td>
+                @Html.ActionLink("Detalle Presupuesto", "DetallePresupuesto", new { idPresupuestoCabecera = item.id_presupuesto_cabecera }) |
+                @Html.ActionLink("Orden de Trabajo", "OrdenTrabajo", new { idPresupuestoCabecera = item.id_presupuesto_cabecera })
+            </td>
+        </tr>
+    }
+</table>

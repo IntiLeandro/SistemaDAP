@@ -1,0 +1,98 @@
+﻿@model SistemaDAP.Models.usuario.AspUserRolesVM
+
+@{
+    ViewBag.Title = "RolesDeUsuario";
+}
+
+<div class="row sub-header">
+    <div class="col-sm-12">
+        <h2>@Model.usuario.UserName</h2>
+    </div>
+</div>
+
+<div class="sub-body">
+    <div class="panel">
+
+        <div class="panel-body">
+            <table class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            Roles Asignados
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+
+                    @foreach (var item in Model.rolesAsignados)
+                    {
+                        <tr>
+                            <td>
+                                <i class="fa fa-envelope"> </i>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-group-xs btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-tasks"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Deshabilitar", "DeshabilitarRol", new { idUsuario = Model.usuario.Id, idRol = item.Id })</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            Roles Disponibles
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.rolesNoAsignados)
+                    {
+                        <tr>
+                            <td>
+                                <i class="fa fa-envelope"> </i>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-group-xs btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-tasks"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Habilitar", "HabilitarRol", new { idUsuario = Model.usuario.Id, idRol = item.Id })</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Haga clic aquí para volver a la lista de usuarios", "Index", "Usuario", routeValues: null, htmlAttributes: new { id = "loginLink" })
+</div>

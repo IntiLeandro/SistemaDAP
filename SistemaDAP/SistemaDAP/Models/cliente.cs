@@ -14,20 +14,34 @@ namespace SistemaDAP.Models
     
     public partial class cliente
     {
-        public decimal id_cliente { get; set; }
-        public decimal id_departamento { get; set; }
-        public decimal id_ciudad { get; set; }
-        public decimal id_pais { get; set; }
-        public string nombre_razon_social_cliente { get; set; }
-        public string direccion_cliente { get; set; }
-        public Nullable<decimal> telefono_cliente { get; set; }
-        public string email_cliente { get; set; }
-        public string ci_ruc_cliente { get; set; }
-        public Nullable<System.DateTime> fecha_nacimiento_cliente { get; set; }
-        public string sexo_cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public cliente()
+        {
+            this.presupuesto_cabecera = new HashSet<presupuesto_cabecera>();
+            this.cobro = new HashSet<cobro>();
+            this.factura = new HashSet<factura>();
+        }
     
+        public int id_cliente { get; set; }
+        public string ci_ruc { get; set; }
+        public string nombre_razon_social { get; set; }
+        public string direccion { get; set; }
+        public string telefono { get; set; }
+        public Nullable<System.DateTime> fecha_nacimiento { get; set; }
+        public string email { get; set; }
+        public string sexo { get; set; }
+        public Nullable<int> id_ciudad { get; set; }
+        public Nullable<int> id_departamento { get; set; }
+        public Nullable<int> id_pais { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<presupuesto_cabecera> presupuesto_cabecera { get; set; }
         public virtual ciudad ciudad { get; set; }
-        public virtual departamento departamento { get; set; }
+        public virtual Departamento Departamento { get; set; }
         public virtual pais pais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cobro> cobro { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<factura> factura { get; set; }
     }
 }

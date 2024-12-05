@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SistemaDAP</RootNamespace>
     <AssemblyName>SistemaDAP</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -25,6 +25,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +54,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -168,14 +172,65 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\bancoController.cs" />
+    <Compile Include="Controllers\cargoController.cs" />
+    <Compile Include="Controllers\ciudadController.cs" />
+    <Compile Include="Controllers\clienteController.cs" />
+    <Compile Include="Controllers\departamentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\paisController.cs" />
+    <Compile Include="Controllers\tipo_articuloController.cs" />
+    <Compile Include="Controllers\tipo_herramientaController.cs" />
+    <Compile Include="Controllers\tipo_servicioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\banco.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cargo.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ciudad.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cliente.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\departamento.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Modelo_DBDAP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo_DBDAP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Modelo_DBDAP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Modelo_DBDAP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pais.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_articulo.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_herramienta.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_servicio.cs">
+      <DependentUpon>Modelo_DBDAP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -186,8 +241,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Modelo_DBDAP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
+      <LastGenOutput>Modelo_DBDAP.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Modelo_DBDAP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
+      <LastGenOutput>Modelo_DBDAP.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Modelo_DBDAP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modelo_DBDAP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Modelo_DBDAP.edmx.diagram">
+      <DependentUpon>Modelo_DBDAP.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -234,6 +306,51 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\pais\Create.cshtml" />
+    <Content Include="Views\pais\Delete.cshtml" />
+    <Content Include="Views\pais\Details.cshtml" />
+    <Content Include="Views\pais\Edit.cshtml" />
+    <Content Include="Views\pais\Index.cshtml" />
+    <Content Include="Views\cargo\Create.cshtml" />
+    <Content Include="Views\cargo\Delete.cshtml" />
+    <Content Include="Views\cargo\Details.cshtml" />
+    <Content Include="Views\cargo\Edit.cshtml" />
+    <Content Include="Views\cargo\Index.cshtml" />
+    <Content Include="Views\tipo_servicio\Create.cshtml" />
+    <Content Include="Views\tipo_servicio\Delete.cshtml" />
+    <Content Include="Views\tipo_servicio\Details.cshtml" />
+    <Content Include="Views\tipo_servicio\Edit.cshtml" />
+    <Content Include="Views\tipo_servicio\Index.cshtml" />
+    <Content Include="Views\banco\Create.cshtml" />
+    <Content Include="Views\banco\Delete.cshtml" />
+    <Content Include="Views\banco\Details.cshtml" />
+    <Content Include="Views\banco\Edit.cshtml" />
+    <Content Include="Views\banco\Index.cshtml" />
+    <Content Include="Views\tipo_articulo\Create.cshtml" />
+    <Content Include="Views\tipo_articulo\Delete.cshtml" />
+    <Content Include="Views\tipo_articulo\Details.cshtml" />
+    <Content Include="Views\tipo_articulo\Edit.cshtml" />
+    <Content Include="Views\tipo_articulo\Index.cshtml" />
+    <Content Include="Views\tipo_herramienta\Create.cshtml" />
+    <Content Include="Views\tipo_herramienta\Delete.cshtml" />
+    <Content Include="Views\tipo_herramienta\Details.cshtml" />
+    <Content Include="Views\tipo_herramienta\Edit.cshtml" />
+    <Content Include="Views\tipo_herramienta\Index.cshtml" />
+    <Content Include="Views\departamento\Create.cshtml" />
+    <Content Include="Views\departamento\Delete.cshtml" />
+    <Content Include="Views\departamento\Details.cshtml" />
+    <Content Include="Views\departamento\Edit.cshtml" />
+    <Content Include="Views\departamento\Index.cshtml" />
+    <Content Include="Views\ciudad\Create.cshtml" />
+    <Content Include="Views\ciudad\Delete.cshtml" />
+    <Content Include="Views\ciudad\Details.cshtml" />
+    <Content Include="Views\ciudad\Edit.cshtml" />
+    <Content Include="Views\ciudad\Index.cshtml" />
+    <Content Include="Views\cliente\Create.cshtml" />
+    <Content Include="Views\cliente\Delete.cshtml" />
+    <Content Include="Views\cliente\Details.cshtml" />
+    <Content Include="Views\cliente\Edit.cshtml" />
+    <Content Include="Views\cliente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +362,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

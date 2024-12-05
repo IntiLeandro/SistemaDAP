@@ -1,0 +1,34 @@
+﻿@model SistemaDAP.Models.departamento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>departamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion_departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion_departamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pais.descripcion_pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pais.descripcion_pais)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_departamento }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

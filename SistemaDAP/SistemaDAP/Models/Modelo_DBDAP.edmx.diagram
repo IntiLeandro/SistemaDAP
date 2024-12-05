@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1d18007cb1b14469a17ac771221a97e3" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DBDAPModelo.pais" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDAPModelo.cargo" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_servicio" Width="1.5" PointX="0.5" PointY="2.375" />
+        <EntityTypeShape EntityType="DBDAPModelo.banco" Width="1.5" PointX="2.25" PointY="3" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_articulo" Width="1.5" PointX="11.875" PointY="0.625" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_herramienta" Width="1.5" PointX="11.875" PointY="2.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.departamento" Width="1.5" PointX="5" PointY="0.5" />
+        <AssociationConnector Association="DBDAPModelo.pais_departamento_fk" />
+        <EntityTypeShape EntityType="DBDAPModelo.ciudad" Width="1.5" PointX="5" PointY="3" />
+        <AssociationConnector Association="DBDAPModelo.departamento_ciudad_fk" />
+        <EntityTypeShape EntityType="DBDAPModelo.cliente" Width="1.5" PointX="7.375" PointY="0.5" />
+        <AssociationConnector Association="DBDAPModelo.ciudad_cliente_fk" />
+        <AssociationConnector Association="DBDAPModelo.departamento_cliente_fk" />
+        <AssociationConnector Association="DBDAPModelo.pais_cliente_fk" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

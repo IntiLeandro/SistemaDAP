@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SistemaDAP.Models.cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_razon_social_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ci_ruc_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_nacimiento_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sexo_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ciudad.descripcion_ciudad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departamento.descripcion_departamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pais.descripcion_pais)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_razon_social_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ci_ruc_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_nacimiento_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sexo_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ciudad.descripcion_ciudad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departamento.descripcion_departamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pais.descripcion_pais)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_cliente }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_cliente }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_cliente })
+        </td>
+    </tr>
+}
+
+</table>

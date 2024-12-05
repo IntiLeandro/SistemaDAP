@@ -1,0 +1,104 @@
+﻿@model SistemaDAP.Models.cliente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_razon_social_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_razon_social_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ci_ruc_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ci_ruc_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_nacimiento_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_nacimiento_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexo_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexo_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciudad.descripcion_ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciudad.descripcion_ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departamento.descripcion_departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento.descripcion_departamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pais.descripcion_pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pais.descripcion_pais)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -64,6 +64,9 @@ namespace SistemaDAP.Models
 
     public class RegisterViewModel
     {
+        //roles
+        public string Name { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]

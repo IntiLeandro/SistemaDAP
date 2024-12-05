@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SistemaDAP.Models.pais>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion_pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nacionalidad_pais)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion_pais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nacionalidad_pais)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_pais }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_pais }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_pais })
+        </td>
+    </tr>
+}
+
+</table>

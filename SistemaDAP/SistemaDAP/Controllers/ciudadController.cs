@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using SistemaDAP.App_Start;
 using SistemaDAP.Models;
 
-namespace SistemaDAP.Controllers
+namespace SistemaDAP.Views
 {
+    [SistemaDapAuth]
     public class ciudadController : Controller
     {
         private DBDAPEntities db = new DBDAPEntities();
@@ -17,12 +19,11 @@ namespace SistemaDAP.Controllers
         // GET: ciudad
         public ActionResult Index()
         {
-            var ciudad = db.ciudad.Include(c => c.departamento);
-            return View(ciudad.ToList());
+            return View(db.ciudad.ToList());
         }
 
         // GET: ciudad/Details/5
-        public ActionResult Details(decimal id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -39,7 +40,6 @@ namespace SistemaDAP.Controllers
         // GET: ciudad/Create
         public ActionResult Create()
         {
-            ViewBag.id_departamento = new SelectList(db.departamento, "id_departamento", "descripcion_departamento");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace SistemaDAP.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_ciudad,id_departamento,descripcion_ciudad")] ciudad ciudad)
+        public ActionResult Create([Bind(Include = "id_ciudad,descripcion")] ciudad ciudad)
         {
             if (ModelState.IsValid)
             {
@@ -57,12 +57,11 @@ namespace SistemaDAP.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id_departamento = new SelectList(db.departamento, "id_departamento", "descripcion_departamento", ciudad.id_departamento);
             return View(ciudad);
         }
 
         // GET: ciudad/Edit/5
-        public ActionResult Edit(decimal id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -73,7 +72,6 @@ namespace SistemaDAP.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_departamento = new SelectList(db.departamento, "id_departamento", "descripcion_departamento", ciudad.id_departamento);
             return View(ciudad);
         }
 
@@ -82,7 +80,7 @@ namespace SistemaDAP.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_ciudad,id_departamento,descripcion_ciudad")] ciudad ciudad)
+        public ActionResult Edit([Bind(Include = "id_ciudad,descripcion")] ciudad ciudad)
         {
             if (ModelState.IsValid)
             {
@@ -90,12 +88,11 @@ namespace SistemaDAP.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id_departamento = new SelectList(db.departamento, "id_departamento", "descripcion_departamento", ciudad.id_departamento);
             return View(ciudad);
         }
 
         // GET: ciudad/Delete/5
-        public ActionResult Delete(decimal id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -112,7 +109,7 @@ namespace SistemaDAP.Controllers
         // POST: ciudad/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(decimal id)
+        public ActionResult DeleteConfirmed(int id)
         {
             ciudad ciudad = db.ciudad.Find(id);
             db.ciudad.Remove(ciudad);

@@ -1,0 +1,74 @@
+﻿@model SistemaDAP.Models.caja_apertura_cierre
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>caja_apertura_cierre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_apertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_apertura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_inicial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_inicial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_cierre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_cierre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_final)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_final)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_apertura_cierre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_apertura_cierre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.caja.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.caja.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_apertura_cierre }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a4450a5edc904f96b402d2a222707404" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="DBDAPModelo.articulo" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="DBDAPModelo.presupuesto_cabecera" Width="1.75" PointX="3.25" PointY="0.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.presupuesto_detalle" Width="1.75" PointX="0.75" PointY="0.5" />
+        <AssociationConnector Association="DBDAPModelo.FK_presupuesto_detalle_articulo" />
+        <AssociationConnector Association="DBDAPModelo.FK_presupuesto_detalle_presupuesto_cabecera" />
+        <EntityTypeShape EntityType="DBDAPModelo.AspNetRoles" Width="1.5" PointX="6.375" PointY="2" />
+        <EntityTypeShape EntityType="DBDAPModelo.AspNetUsers" Width="1.5" PointX="14.75" PointY="2.125" />
+        <AssociationConnector Association="DBDAPModelo.AspNetUserRoles" />
+        <EntityTypeShape EntityType="DBDAPModelo.permiso_rol" Width="1.5" PointX="6.5" PointY="3.875" />
+        <EntityTypeShape EntityType="DBDAPModelo.cliente" Width="1.5" PointX="3.5" PointY="5" />
+        <AssociationConnector Association="DBDAPModelo.FK_presupuesto_cabecera_cliente" />
+        <EntityTypeShape EntityType="DBDAPModelo.orden_trabajo_detalle" Width="2.5" PointX="9.125" PointY="5.375" />
+        <AssociationConnector Association="DBDAPModelo.FK_orden_trabajo_detalle_articulo" />
+        <EntityTypeShape EntityType="DBDAPModelo.orden_trabajo_cabecera" Width="2" PointX="5.875" PointY="6.875" />
+        <AssociationConnector Association="DBDAPModelo.FK_orden_trabajo_cabecera_presupuesto_cabecera" />
+        <AssociationConnector Association="DBDAPModelo.FK_orden_trabajo_detalle_orden_trabajo_cabecera" />
+        <EntityTypeShape EntityType="DBDAPModelo.C__MigrationHistory" Width="1.5" PointX="0.625" PointY="8.375" />
+        <EntityTypeShape EntityType="DBDAPModelo.AspNetUserClaims" Width="1.5" PointX="11.25" PointY="8.75" />
+        <EntityTypeShape EntityType="DBDAPModelo.AspNetUserLogins" Width="1.5" PointX="11.25" PointY="2.25" />
+        <EntityTypeShape EntityType="DBDAPModelo.sysdiagrams" Width="1.5" PointX="13.5" PointY="7.125" />
+        <AssociationConnector Association="DBDAPModelo.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DBDAPModelo.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <EntityTypeShape EntityType="DBDAPModelo.ciudad" Width="1.5" PointX="0.625" PointY="10.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.Departamento" Width="1.5" PointX="3.125" PointY="9.875" />
+        <EntityTypeShape EntityType="DBDAPModelo.pais" Width="1.5" PointX="5" PointY="10.375" />
+        <AssociationConnector Association="DBDAPModelo.FK_cliente_ciudad" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DBDAPModelo.FK_cliente_Departamento" />
+        <AssociationConnector Association="DBDAPModelo.FK_cliente_pais" />
+        <EntityTypeShape EntityType="DBDAPModelo.banco" Width="1.5" PointX="14.125" PointY="20.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.caja" Width="1.5" PointX="17.75" PointY="20.75" />
+        <EntityTypeShape EntityType="DBDAPModelo.caja_apertura_cierre" Width="1.5" PointX="20" PointY="4.125" />
+        <EntityTypeShape EntityType="DBDAPModelo.cargo" Width="1.5" PointX="12.875" PointY="0.625" />
+        <EntityTypeShape EntityType="DBDAPModelo.cobro" Width="1.5" PointX="16.375" PointY="16.375" />
+        <EntityTypeShape EntityType="DBDAPModelo.compra" Width="1.5" PointX="13.5" PointY="13.75" />
+        <EntityTypeShape EntityType="DBDAPModelo.compra_detalle" Width="1.5" PointX="18.75" PointY="11.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.factura" Width="1.5" PointX="8.125" PointY="11" />
+        <EntityTypeShape EntityType="DBDAPModelo.factura_detalle" Width="1.5" PointX="16.375" PointY="12" />
+        <EntityTypeShape EntityType="DBDAPModelo.herramienta" Width="1.5" PointX="6.875" PointY="17.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.presupuesto_estado" Width="1.5" PointX="1" PointY="17.875" />
+        <EntityTypeShape EntityType="DBDAPModelo.proveedor" Width="1.5" PointX="11.25" PointY="13.625" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_articulo" Width="1.5" PointX="0.75" PointY="15" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_cobro" Width="1.5" PointX="14.125" PointY="18.125" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_factura" Width="1.5" PointX="5.875" PointY="22.625" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_herramienta" Width="1.5" PointX="4.625" PointY="17" />
+        <EntityTypeShape EntityType="DBDAPModelo.tipo_servicio" Width="1.5" PointX="0.75" PointY="20.5" />
+        <AssociationConnector Association="DBDAPModelo.FK_articulo_tipo_articulo" />
+        <AssociationConnector Association="DBDAPModelo.FK_compra_detalle_articulo" />
+        <AssociationConnector Association="DBDAPModelo.FK_factura_detalle_articulo" />
+        <AssociationConnector Association="DBDAPModelo.FK_caja_apertura_cierre_AspNetUsers" />
+        <AssociationConnector Association="DBDAPModelo.FK_cobro_banco" />
+        <AssociationConnector Association="DBDAPModelo.FK_caja_apertura_cierre_caja" />
+        <AssociationConnector Association="DBDAPModelo.FK_proveedor_ciudad" />
+        <AssociationConnector Association="DBDAPModelo.FK_cobro_cliente" />
+        <AssociationConnector Association="DBDAPModelo.FK_factura_cliente" />
+        <AssociationConnector Association="DBDAPModelo.FK_cobro_factura" />
+        <AssociationConnector Association="DBDAPModelo.FK_cobro_tipo_cobro" />
+        <AssociationConnector Association="DBDAPModelo.FK_compra_detalle_compra" />
+        <AssociationConnector Association="DBDAPModelo.FK_compra_proveedor" />
+        <AssociationConnector Association="DBDAPModelo.FK_compra_detalle_herramienta" />
+        <AssociationConnector Association="DBDAPModelo.FK_proveedor_Departamento" />
+        <AssociationConnector Association="DBDAPModelo.FK_factura_detalle_factura" />
+        <AssociationConnector Association="DBDAPModelo.FK_factura_orden_trabajo_cabecera" />
+        <AssociationConnector Association="DBDAPModelo.FK_factura_tipo_factura" />
+        <AssociationConnector Association="DBDAPModelo.FK_herramienta_tipo_herramienta" />
+        <AssociationConnector Association="DBDAPModelo.FK_proveedor_pais" />
+        <AssociationConnector Association="DBDAPModelo.FK_presupuesto_cabecera_presupuesto_estado" />
+        <AssociationConnector Association="DBDAPModelo.FK_presupuesto_detalle_tipo_servicio" />
+        <EntityTypeShape EntityType="DBDAPModelo.impuesto" Width="1.625" PointX="3.25" PointY="14.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.motivo_ajuste" Width="1.5" PointX="24.125" PointY="6.5" />
+        <EntityTypeShape EntityType="DBDAPModelo.salida_herramienta_cabecera" Width="2.375" PointX="8.125" PointY="0.75" />
+        <EntityTypeShape EntityType="DBDAPModelo.salida_herramienta_detalle" Width="2.25" PointX="18.875" PointY="8" />
+        <AssociationConnector Association="DBDAPModelo.FK_herramienta_iva1" />
+        <AssociationConnector Association="DBDAPModelo.FK_salida_herramienta_detalle_herramienta" />
+        <AssociationConnector Association="DBDAPModelo.FK_salida_herramienta_cabecera_orden_trabajo_cabecera" />
+        <AssociationConnector Association="DBDAPModelo.FK_salida_herramienta_detalle_salida_herramienta_cabecera" />
+        <EntityTypeShape EntityType="DBDAPModelo.ajuste" Width="1.5" PointX="26.375" PointY="10.625" />
+        <AssociationConnector Association="DBDAPModelo.FK_ajuste_articulo" />
+        <AssociationConnector Association="DBDAPModelo.FK_ajuste_herramienta" />
+        <AssociationConnector Association="DBDAPModelo.FK_ajuste_tipo_ajuste" />
+        <EntityTypeShape EntityType="DBDAPModelo.empleado" Width="1.5" PointX="17" PointY="2" />
+        <AssociationConnector Association="DBDAPModelo.FK_empleado_AspNetUsers" />
+        <AssociationConnector Association="DBDAPModelo.FK_empleado_cargo" />
+        <AssociationConnector Association="DBDAPModelo.FK_empleado_ciudad" />
+        <AssociationConnector Association="DBDAPModelo.FK_empleado_Departamento" />
+        <AssociationConnector Association="DBDAPModelo.FK_empleado_pais" />
+        <EntityTypeShape EntityType="DBDAPModelo.familia" Width="1.5" PointX="22.875" PointY="16" />
+        <EntityTypeShape EntityType="DBDAPModelo.grupo" Width="1.5" PointX="25.125" PointY="15.875" />
+        <EntityTypeShape EntityType="DBDAPModelo.marca" Width="1.5" PointX="20.625" PointY="16" />
+        <EntityTypeShape EntityType="DBDAPModelo.modelo" Width="1.5" PointX="18.375" PointY="16.25" />
+        <AssociationConnector Association="DBDAPModelo.FK_articulo_grupo" />
+        <AssociationConnector Association="DBDAPModelo.FK_articulo_impuesto" />
+        <AssociationConnector Association="DBDAPModelo.FK_familia_marca" />
+        <AssociationConnector Association="DBDAPModelo.FK_grupo_familia" />
+        <AssociationConnector Association="DBDAPModelo.FK_herramienta_grupo" />
+        <AssociationConnector Association="DBDAPModelo.FK_marca_modelo" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

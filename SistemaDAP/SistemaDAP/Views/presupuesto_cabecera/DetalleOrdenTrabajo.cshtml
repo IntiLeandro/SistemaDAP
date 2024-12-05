@@ -1,0 +1,45 @@
+﻿ @model IEnumerable<SistemaDAP.Models.orden_trabajo_detalle>
+
+@{
+    ViewBag.Title = "DetalleOrdenTrabajo";
+}
+
+<h2>Detalles de la Orden de Trabajo</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "CreateOrdenTrabajoDetalle")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.orden_trabajo_cabecera.id_orden_trabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.articulo.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.orden_trabajo_cabecera.id_orden_trabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.articulo.descripcion)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.id_orden_trabajo_detalle }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_orden_trabajo_detalle }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_orden_trabajo_detalle })*@
+        </td>
+    </tr>
+}
+
+</table>

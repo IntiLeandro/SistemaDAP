@@ -1,0 +1,50 @@
+﻿@model SistemaDAP.Models.presupuesto_detalle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>presupuesto_detalle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio_unitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio_unitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.articulo.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.articulo.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presupuesto_cabecera.id_presupuesto_cabecera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presupuesto_cabecera.id_presupuesto_cabecera)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_presupuesto_detalle }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

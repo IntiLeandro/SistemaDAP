@@ -14,7 +14,16 @@ namespace SistemaDAP.Models
     
     public partial class tipo_articulo
     {
-        public decimal id_tipo_articulo { get; set; }
-        public string descripcion_tipo_articulo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tipo_articulo()
+        {
+            this.articulo = new HashSet<articulo>();
+        }
+    
+        public int id_tipo_articulo { get; set; }
+        public string descripcion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<articulo> articulo { get; set; }
     }
 }

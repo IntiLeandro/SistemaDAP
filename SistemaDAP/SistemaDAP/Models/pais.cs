@@ -17,17 +17,19 @@ namespace SistemaDAP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public pais()
         {
-            this.departamento = new HashSet<departamento>();
             this.cliente = new HashSet<cliente>();
+            this.proveedor = new HashSet<proveedor>();
+            this.empleado = new HashSet<empleado>();
         }
     
-        public decimal id_pais { get; set; }
-        public string descripcion_pais { get; set; }
-        public string nacionalidad_pais { get; set; }
+        public int id_pais { get; set; }
+        public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<departamento> departamento { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cliente> cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<proveedor> proveedor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<empleado> empleado { get; set; }
     }
 }

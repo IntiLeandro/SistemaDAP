@@ -14,7 +14,16 @@ namespace SistemaDAP.Models
     
     public partial class cargo
     {
-        public decimal id_cargo { get; set; }
-        public string descripcion_cargo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public cargo()
+        {
+            this.empleado = new HashSet<empleado>();
+        }
+    
+        public int id_cargo { get; set; }
+        public string descripcion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<empleado> empleado { get; set; }
     }
 }

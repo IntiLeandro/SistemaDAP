@@ -18,14 +18,18 @@ namespace SistemaDAP.Models
         public ciudad()
         {
             this.cliente = new HashSet<cliente>();
+            this.proveedor = new HashSet<proveedor>();
+            this.empleado = new HashSet<empleado>();
         }
     
-        public decimal id_ciudad { get; set; }
-        public decimal id_departamento { get; set; }
-        public string descripcion_ciudad { get; set; }
+        public int id_ciudad { get; set; }
+        public string descripcion { get; set; }
     
-        public virtual departamento departamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cliente> cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<proveedor> proveedor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<empleado> empleado { get; set; }
     }
 }

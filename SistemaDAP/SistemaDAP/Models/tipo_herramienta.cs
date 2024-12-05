@@ -14,7 +14,16 @@ namespace SistemaDAP.Models
     
     public partial class tipo_herramienta
     {
-        public decimal id_tipo_herramienta { get; set; }
-        public string descripcion_tipo_herramienta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tipo_herramienta()
+        {
+            this.herramienta = new HashSet<herramienta>();
+        }
+    
+        public int id_tipo_herramienta { get; set; }
+        public string descripcion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<herramienta> herramienta { get; set; }
     }
 }
